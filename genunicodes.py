@@ -4,7 +4,12 @@
 # Eduardo Ruiz Duarte
 # toorandom@gmail.com
 
+import os
 from PIL import Image,ImageDraw,ImageFont
+
+
+path = os.getcwd() +  "/bmps"
+os.mkdir(path)
 
 arial_font = ImageFont.truetype(font='./ARIALUNI.TTF',size=20)
 s=30
@@ -15,5 +20,5 @@ for l in range (0,65535):
     draw = ImageDraw.Draw(canvas)
     w,h = arial_font.getsize(unicode_text)
     draw.text(((s-w)/2,(s-h)/2), unicode_text, font = arial_font, fill = "#000000")
-    canvas.save(hex(l)[2:].zfill(4)+".bmp", "BMP")
+    canvas.save(path + "/" +hex(l)[2:].zfill(4)+".bmp", "BMP")
     print(l)
